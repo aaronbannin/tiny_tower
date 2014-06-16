@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610192438) do
+ActiveRecord::Schema.define(version: 20140615040704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "floors", force: true do |t|
-    t.string   "type"
+    t.string   "floor_type"
     t.string   "name"
     t.boolean  "is_owned"
     t.datetime "created_at"
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20140610192438) do
   end
 
   create_table "floors_jobs", id: false, force: true do |t|
-    t.integer "floors_id"
-    t.integer "jobs_id"
+    t.integer "floor_id"
+    t.integer "job_id"
   end
 
   create_table "jobs", force: true do |t|
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 20140610192438) do
     t.datetime "updated_at"
   end
 
+  create_table "jobs_missions", id: false, force: true do |t|
+    t.integer "mission_id"
+    t.integer "job_id"
+    t.integer "job_quantity"
+  end
+
+  add_index "jobs_missions", ["job_id"], name: "index_jobs_missions_on_job_id", using: :btree
+  add_index "jobs_missions", ["mission_id"], name: "index_jobs_missions_on_mission_id", using: :btree
+
   create_table "missions", force: true do |t|
     t.string   "name"
     t.integer  "reward"
@@ -43,14 +52,5 @@ ActiveRecord::Schema.define(version: 20140610192438) do
     t.datetime "updated_at"
     t.boolean  "is_complete", default: false
   end
-
-  create_table "missions_jobs", id: false, force: true do |t|
-    t.integer "missions_id"
-    t.integer "jobs_id"
-    t.integer "job_quantity"
-  end
-
-  add_index "missions_jobs", ["jobs_id"], name: "index_missions_jobs_on_jobs_id", using: :btree
-  add_index "missions_jobs", ["missions_id"], name: "index_missions_jobs_on_missions_id", using: :btree
 
 end

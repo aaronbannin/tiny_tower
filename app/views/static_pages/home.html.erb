@@ -1,2 +1,37 @@
 <h1>StaticPages#home</h1>
 <p>Find me in app/views/static_pages/home.html.erb</p>
+
+<table>                         
+  <tr>                          
+	<th>name</th>
+	<th>is owned</th>
+  </tr>
+<% @floors_audit.each do |key, array| %>      
+  <tr>
+	<td><%= key %></td>  
+	<td><%= array %></td>
+  </tr>
+<% end %>                        
+</table>  
+
+
+<table>                         
+  <tr>                          
+	<th>Floor Type</th>
+	<th>name</th>
+	<th>is owned</th>
+	<th>true</th>
+	<th>false</th>
+  </tr>
+<% @show_floors.each do |data| %>      
+  <tr>
+    <td><%= data.floor_type %>
+	<td><%= data.name %></td>  
+	<td><%= data.is_owned %></td>
+	<td><%= radio_button_tag(data.name, "true", checked = data.is_owned) %>
+	<td><%= radio_button_tag(data.name, "false", checked = data.is_owned) %>
+	<td><%= button_to "okay", :action => "home" %>
+  </tr>
+<% end %>                        
+</table>  
+
