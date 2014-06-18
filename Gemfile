@@ -51,3 +51,7 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'annotate'
+
+group :production do
+  gem 'rails_12factor', '0.0.2'
+end
