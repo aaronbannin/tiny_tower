@@ -1,7 +1,7 @@
 TinyTower::Application.routes.draw do
   root 'floors#show'
-  get "static_pages/help"
-  match '/', to: 'floors#show', via 'post'
+  # get "static_pages/help"
+  match '/', to: 'floors#show', via 'get'
 #  match '/update', to: 'static_pages#home', via 'post'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
