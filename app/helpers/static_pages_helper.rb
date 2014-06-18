@@ -15,6 +15,6 @@ module StaticPagesHelper
   	
   	# Floor.find_by(id: floor_id).update(is_owned: true_false)
   
-  end
+  
   
 end

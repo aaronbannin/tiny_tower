@@ -18,7 +18,7 @@
 	<td><%= data.is_owned %></td>
 	<td><%= radio_button_tag(data.name, "true", checked = data.is_owned) %>
 	<td><%= radio_button_tag(data.name, "false", checked = data.is_owned) %>
-	<td><%= button_to "this is a name", root, :method => :set_true, :remote => true %>
+	<td><%= button_to "okay", "#" %>
   </tr>
 <% end %>                        
 </table>  
@@ -43,5 +43,3 @@
 <div> 
 </div>
 </div>
-
-
