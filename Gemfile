@@ -46,3 +46,8 @@ end
 
 # bootstrap for css fanciness
 gem 'bootstrap-sass', '2.3.2.0'
+
+# some utilities
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'annotate'

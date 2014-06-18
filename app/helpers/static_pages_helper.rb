@@ -10,10 +10,11 @@ module StaticPagesHelper
   # Job.select("jobs.id").joins(:mission).where("missions.id = ?", mission_id)
   
   # audit floor count
-  # Floor.count(:all, :group => "floor_type")
+  # Floor.count(:all, :group => "floor_type")	
+  	# update floors method, pass in floor_id and true_false
+  	
+  	# Floor.find_by(id: floor_id).update(is_owned: true_false)
   
-  def update_floor(floor_id, true_false)
-  	Floor.find_by(id: floor_id).update(is_owned: true_false)
   end
   
 end
