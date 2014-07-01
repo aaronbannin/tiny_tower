@@ -1,46 +1,42 @@
 <div class="container">
-<h1>Tiny Tower Missions</h1>
-<div class="row">
-<div class="span6">
- <div class="col-md-8">
-<table>                         
-  <tr>                          
-	<th>Floor Type</th>
-	<th>name</th>
-	<th>is owned</th>
-	<th>true</th>
-	<th>false</th>
-  </tr>
-<% @show_floors.each do |data| %>      
-  <tr>
-    <td><%= data.floor_type %>
-	<td><%= data.name %></td>  
-	<td><%= data.is_owned %></td>
-	<td><%= radio_button_tag(data.name, "true", checked = data.is_owned) %>
-	<td><%= radio_button_tag(data.name, "false", checked = data.is_owned) %>
-	<td><%= button_to "set to true", root, :method => :set_true, :remote => true %>
-	<td><%= button_to "okay", "#" %>
-  </tr>
-<% end %>                        
-</table>  
+ <h1>Tiny Tower Missions</h1>
+  <div class="row">
+   <div class="span6">
+    <div class="col-md-8">
+     <table>
+      <tr>
+	   <th>Floor Type</th>
+       <th>Name</th>
+	   <th>Is Owned</th>
+	   <th></th>
+      </tr>
+     <% @show_floors.each do |floor| %>
+      <tr>
+       <td><%= floor.floor_type %>
+	   <td><%= floor.name %></td>
+	   <td><%= floor.is_owned %></td>
+	   <td><%= button_to "swap", floor_path(floor), method: :patch %>
+      </tr>
+     <% end %>
+    </table>
+   </div>
+  </div>
+  <div class="span6">
+   <div class="col-md-4 col-md-offset-8">
+    <table>
+     <tr>
+	  <th>name</th>
+	  <th>is owned</th>
+     </tr>
+    <% @floors_audit.each do |key, array| %>
+     <tr>
+	  <td><%= key %></td>
+	  <td><%= array %></td>
+     </tr>
+    <% end %>
+   </table>
+  </div>
  </div>
 </div>
 
-<div class="span6">
- <div class="col-md-4 col-md-offset-8">
-<table>                         
-  <tr>                          
-	<th>name</th>
-	<th>is owned</th>
-  </tr>
-<% @floors_audit.each do |key, array| %>      
-  <tr>
-	<td><%= key %></td>  
-	<td><%= array %></td>
-  </tr>
-<% end %>                        
-</table> 
- </div>
-<div> 
-</div>
-</div>
+

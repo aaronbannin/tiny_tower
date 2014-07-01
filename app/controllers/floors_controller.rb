@@ -1,22 +1,23 @@
 class FloorsController < ApplicationController
 	def show
-		# find by floor_id or name?
   		@floors_owned = Floor.select("name, is_owned").where("is_owned is true")
-  		@show_floors = Floor.select("floor_type, name, is_owned").where("floor_type != 'Residential'").order("floor_type, name")
+  		@show_floors = Floor.where("floor_type != 'Residential'").order("floor_type, name")
   		@floors_audit = Floor.select("floor_type").where("is_owned is true").group("floor_type").count
 
 	end
-	
+
 	def new
 		# @floor = Floor.new
 	end
-	
+
 	def create
 	end
-	
+
 	def update
-		@set_true = Floor.find_by(floor_name: floor_name).update(is_owned: 'true')
-		@set_false = Floor.find_by(floor_name: floor_name).update(is_owned: 'false')
+	    @floor = Floor.find(params[:id])
+	    @floor.is_owned = !@floor.is_owned
+	    @floor.save
+	    redirect_to root_url
 	end
 
 
