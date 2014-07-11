@@ -1,8 +1,8 @@
 TinyTower::Application.routes.draw do
   root 'floors#show'
-  post '/update', to: 'floors#update'
-  resources :floors
-  match '/missions', to: 'missions#show', via: 'get'
+  match ':/missions/:id', to: 'missions#index', via: 'put'
+  resources :floors, :missions
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

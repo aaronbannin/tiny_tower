@@ -1,0 +1,55 @@
+<div class="container">
+ <h1>Missions</h1>
+  <div class="row">
+   <div class="span6">
+    <div class="col-md-8">
+     <table>
+      <tr>
+       <th>Mission Name</th>
+       <th>Reward</th>
+       <th>Is Complete</th>
+       <th></th>
+      </tr>
+      <% @show_missions.each do |mission| %>
+       <tr>
+        <td><%= mission.name %></td>
+        <td><%= mission.reward %></td>
+        <td><%= mission.is_complete %></td>
+        <td><%= button_to "swap", mission_path(mission), method: :patch %></td>
+       </tr>
+      <% end %>
+     </table>
+    </div>
+   </div>
+   <div class="span6">
+    <div class="col-md-4 col-md-offset-8">
+     <h4>Audit Mission Count</h4>
+     <table>
+      <tr>
+       <th>Name</th>
+       <th>Is Complete</th>
+      </tr>
+      <% @missions_audit.each do |key, array| %>
+       <tr>
+        <td><%= key %></td>
+        <td><%= array %></td>
+       </tr>
+      <% end %>
+     </table>
+     <table>
+      <tr>
+       <th>Mission Name</th>
+       <th>Is Eligible</th>
+      </tr>
+      <% @missions_eligible.each do |mission| %>
+       <tr>
+        <td><%= mission.name %></td>
+        <td><%= mission.is_eligible %></td>
+       </tr>
+      <% end %>
+     </table>
+    </div>
+   </div>
+
+ </div>
+</div>

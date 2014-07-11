@@ -12,7 +12,7 @@
       </tr>
      <% @show_floors.each do |floor| %>
       <tr>
-       <td><%= floor.floor_type %>
+       <td><%= floor.floor_type %></td>
 	   <td><%= floor.name %></td>
 	   <td><%= floor.is_owned %></td>
 	   <td><%= button_to "swap", floor_path(floor), method: :patch %>
